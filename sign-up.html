@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Entertainment web app</title>
+  </head>
+  <body>
+    <form action="login.html">
+      <fieldset>
+        <legend>Sign Up</legend>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          onkeyup="checkPassword()"
+        />
+        <label for="repeat-password">Repeat Password</label>
+        <input
+          type="password"
+          id="repeat-password"
+          name="repeat-password"
+          onkeyup="checkPassword()"
+        />
+
+        <input
+          type="submit"
+          id="create-account"
+          value="Create an account"
+          disabled
+        />
+      </fieldset>
+    </form>
+    <ins id="passwords-match"></ins>
+    <ins id="passwords-no-match"></ins>
+    <hr />
+    <aside>
+      <em>Already have an account?</em>
+      <a href="./login.html">Login</a>
+    </aside>
+  </body>
+  <script>
+    const checkPassword = () => {
+      const passwordValue = document.getElementById("password").value;
+      const checkPasswordValue =
+        document.getElementById("repeat-password").value;
+
+      /* passwords match, unlock submit button */
+      const changeInsValidated = () => {
+        document.getElementById("passwords-match").innerHTML =
+          "Passwords match";
+        document.getElementById("passwords-no-match").innerHTML = "";
+        document.getElementById("create-account").disabled = false;
+      };
+      /* passwords don't match, lock submit button */
+
+      const changeInsNotValidated = () => {
+        document.getElementById("passwords-no-match").innerHTML =
+          "Passwords don't Match";
+        document.getElementById("passwords-match").innerHTML = "";
+      };
+
+      if (passwordValue === checkPasswordValue) {
+        changeInsValidated();
+      } else {
+        changeInsNotValidated();
+      }
+    };
+  </script>
+</html>
