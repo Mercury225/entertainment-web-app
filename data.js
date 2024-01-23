@@ -140,6 +140,18 @@ const runVideosInSearchResults = () => {
   return addArticleTagsToId(filterData(), "search-results");
 };
 
+/* movies filter */
+
+const filterMoviesOnly = () => {
+  const filteredArray = data.filter((movie) => movie.category === "Movie");
+  return filteredArray;
+};
+
+const runVideosinMovies = () => {
+  return addArticleTagsToId(filterMoviesOnly(), "movies");
+};
+/* adding the articles mainframe */
+
 if (document.getElementById("recommended")) {
   runVideosInRecommended();
 }
@@ -150,4 +162,6 @@ if (document.getElementById("search-results")) {
   runVideosInSearchResults();
 }
 
-/* search terms */
+if (document.getElementById("movies")) {
+  runVideosinMovies();
+}
