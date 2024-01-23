@@ -1,5 +1,10 @@
 import data from "./data.json" assert { type: "json" };
-import { filterData } from "./search-results.js";
+import {
+  filterData,
+  filterDataMovie,
+  filterDataTv,
+  filterDataBookmarked,
+} from "./search-results.js";
 
 /*recommended list is 5 - 28 */
 
@@ -136,8 +141,21 @@ const runVideosInTrending = () => {
   return addArticleTagsToId(trendingList, "trending");
 };
 
+/* search results */
 const runVideosInSearchResults = () => {
   return addArticleTagsToId(filterData(), "search-results");
+};
+const runVideosInSearchResultsMovie = () => {
+  return addArticleTagsToId(filterDataMovie(), "search-results-movies");
+};
+const runVideosInSearchResultsTv = () => {
+  return addArticleTagsToId(filterDataTv(), "search-results-tv");
+};
+const runVideosInSearchResultsBookmarked = () => {
+  return addArticleTagsToId(
+    filterDataBookmarked(),
+    "search-results-bookmarked"
+  );
 };
 
 /* movies filter */
@@ -188,8 +206,19 @@ if (document.getElementById("recommended")) {
 if (document.getElementById("trending")) {
   runVideosInTrending();
 }
+
+/* search results */
 if (document.getElementById("search-results")) {
   runVideosInSearchResults();
+}
+if (document.getElementById("search-results-tv")) {
+  runVideosInSearchResultsTv();
+}
+if (document.getElementById("search-results-movies")) {
+  runVideosInSearchResultsMovie();
+}
+if (document.getElementById("search-results-bookmarked")) {
+  runVideosInSearchResultsBookmarked();
 }
 
 if (document.getElementById("movies")) {
