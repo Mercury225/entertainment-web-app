@@ -1,12 +1,5 @@
 import data from "./data.json" assert { type: "json" };
-
-document.getElementById("search").addEventListener("keyup", (event) => {
-  const searchQuery = document.getElementById("search").value;
-  const filteredList = data.filter((video) =>
-    video.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  console.log(filteredList);
-});
+import { filterData } from "./search-results.js";
 
 /*recommended list is 5 - 28 */
 
@@ -122,7 +115,7 @@ const convertListToData = (list) => {
   return array;
 };
 
-const addArticleTagsToId = (dataArray, id) => {
+export const addArticleTagsToId = (dataArray, id) => {
   for (let i = 0; i < dataArray.length; i++) {
     attachArticleToId(dataArray[i], id);
   }
@@ -143,5 +136,18 @@ const runVideosInTrending = () => {
   return addArticleTagsToId(trendingList, "trending");
 };
 
-runVideosInRecommended();
-runVideosInTrending();
+const runVideosInSearchResults = () => {
+  return addArticleTagsToId(filterData(), "search-results");
+};
+
+if (document.getElementById("recommended")) {
+  runVideosInRecommended();
+}
+if (document.getElementById("trending")) {
+  runVideosInTrending();
+}
+if (document.getElementById("search-results")) {
+  runVideosInSearchResults();
+}
+
+/* search terms */
