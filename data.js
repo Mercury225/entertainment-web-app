@@ -150,6 +150,36 @@ const filterMoviesOnly = () => {
 const runVideosinMovies = () => {
   return addArticleTagsToId(filterMoviesOnly(), "movies");
 };
+
+const filterTvOnly = () => {
+  const filteredArray = data.filter((movie) => movie.category === "TV Series");
+  return filteredArray;
+};
+
+const runVideosinTv = () => {
+  return addArticleTagsToId(filterTvOnly(), "tv");
+};
+
+const filterBookmarkedMoviesOnly = () => {
+  const filteredArray = data.filter(
+    (movie) => movie.category === "Movie" && movie.isBookmarked
+  );
+  return filteredArray;
+};
+const filterBookmarkedTvOnly = () => {
+  const filteredArray = data.filter(
+    (movie) => movie.category === "TV Series" && movie.isBookmarked
+  );
+  return filteredArray;
+};
+
+const runVideosInBookmarkedMovie = () => {
+  return addArticleTagsToId(filterBookmarkedMoviesOnly(), "bookmarked-movies");
+};
+const runVideosInBookmarkedTv = () => {
+  return addArticleTagsToId(filterBookmarkedTvOnly(), "bookmarked-tv");
+};
+
 /* adding the articles mainframe */
 
 if (document.getElementById("recommended")) {
@@ -164,4 +194,13 @@ if (document.getElementById("search-results")) {
 
 if (document.getElementById("movies")) {
   runVideosinMovies();
+}
+if (document.getElementById("tv")) {
+  runVideosinTv();
+}
+if (document.getElementById("bookmarked-tv")) {
+  runVideosInBookmarkedTv();
+}
+if (document.getElementById("bookmarked-movies")) {
+  runVideosInBookmarkedMovie();
 }
