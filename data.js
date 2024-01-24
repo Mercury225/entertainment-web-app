@@ -185,6 +185,7 @@ const runVideosInSearchResultsTv = () => {
   return addArticleTagsToId(filterDataTv(), "search-results-tv");
 };
 const runVideosInSearchResultsBookmarked = () => {
+  console.log("from data.js", filterDataBookmarked());
   return addArticleTagsToId(
     filterDataBookmarked(),
     "search-results-bookmarked"

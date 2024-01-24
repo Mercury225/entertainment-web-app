@@ -38,9 +38,13 @@ export const filterDataTv = () => {
 export const filterDataBookmarked = () => {
   const filteredDataArray = data.filter(
     (movie) =>
-      movie.isBookmarked === true &&
+      movie.isBookmarked === "true" &&
       movie.title.toLowerCase().includes(searchTerm().toLowerCase())
   );
+
+  setTimeout(() => {
+    console.log("from the function", filteredDataArray);
+  }, 1000);
 
   return filteredDataArray;
 };
@@ -53,7 +57,8 @@ const createHeader = (filter) => {
 };
 
 const appendHeader = (filter, id) => {
-  return document.getElementById(id).appendChild(createHeader(filter));
+  const process = document.getElementById(id).appendChild(createHeader(filter));
+  return process;
 };
 if (document.getElementById("search-results")) {
   appendHeader(filterData(), "search-results");
@@ -61,9 +66,15 @@ if (document.getElementById("search-results")) {
 if (document.getElementById("search-results-tv")) {
   appendHeader(filterDataTv(), "search-results-tv");
 }
-if (document.getElementById("search-results-bookmarked")) {
-  appendHeader(filterDataBookmarked(), "search-results-bookmarked");
-}
+
 if (document.getElementById("search-results-movies")) {
   appendHeader(filterDataMovie(), "search-results-movies");
 }
+
+setTimeout(() => {
+  if (document.getElementById("search-results-bookmarked")) {
+    console.log("from if statement", filterDataBookmarked());
+
+    appendHeader(filterDataBookmarked(), "search-results-bookmarked");
+  }
+}, 0);
