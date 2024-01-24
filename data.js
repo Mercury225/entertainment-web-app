@@ -1,4 +1,29 @@
-import data from "./data.json" assert { type: "json" };
+import data from "./data.json" assert { type: "json" }; /* update data.json */
+
+const getTruthValue = (index) => {
+  return localStorage.getItem(localStorage.key(index));
+};
+
+const getKeyValue = (index) => {
+  return localStorage.key(index);
+};
+
+const findJSON = (index) => {
+  return data.filter((movie) => movie.title === getKeyValue(index))[0];
+};
+const changeBookmarkStatus = (index) => {
+  findJSON(index).isBookmarked = getTruthValue(index);
+  return;
+};
+const updateJSON = () => {
+  {
+    for (let i = 0; i < localStorage.length; i++) {
+      changeBookmarkStatus(i);
+    }
+  }
+};
+
+updateJSON();
 import {
   filterData,
   filterDataMovie,
@@ -28,13 +53,21 @@ const createVideoImg = (movieObject) => {
 };
 const createBookmarkSvg = (movieObject) => {
   const createImgTag = document.createElement("img");
-  if (movieObject.isBookmarked === true) {
+
+  if (
+    movieObject.isBookmarked === true ||
+    movieObject.isBookmarked === "true"
+  ) {
     createImgTag.setAttribute("src", "./assets/icon-bookmark-full.svg");
     createImgTag.setAttribute("alt", "full bookmark");
-  }
-  if (movieObject.isBookmarked === false) {
+    createImgTag.classList.add("bookmark");
+  } else if (
+    movieObject.isBookmarked === false ||
+    movieObject.isBookmarked === "false"
+  ) {
     createImgTag.setAttribute("src", "./assets/icon-bookmark-empty.svg");
     createImgTag.setAttribute("alt", "empty bookmark");
+    createImgTag.classList.add("bookmark");
   }
 
   createImgTag.setAttribute("width", "20");
@@ -180,13 +213,13 @@ const runVideosinTv = () => {
 
 const filterBookmarkedMoviesOnly = () => {
   const filteredArray = data.filter(
-    (movie) => movie.category === "Movie" && movie.isBookmarked
+    (movie) => movie.category === "Movie" && movie.isBookmarked === "true"
   );
   return filteredArray;
 };
 const filterBookmarkedTvOnly = () => {
   const filteredArray = data.filter(
-    (movie) => movie.category === "TV Series" && movie.isBookmarked
+    (movie) => movie.category === "TV Series" && movie.isBookmarked === "true"
   );
   return filteredArray;
 };
@@ -206,6 +239,53 @@ if (document.getElementById("recommended")) {
 if (document.getElementById("trending")) {
   runVideosInTrending();
 }
+
+const switchBookmarkPhoto = (event) => {
+  let movieName = event.target;
+
+  const findMovieTitle = () => {
+    return movieName.previousElementSibling.alt;
+  };
+
+  const storageManipulationTrue = () => {
+    if (localStorage.getItem(findMovieTitle()) === null) {
+      localStorage.setItem(findMovieTitle(), true);
+    } else if (localStorage.getItem(findMovieTitle()) === "false") {
+      localStorage.removeItem(findMovieTitle());
+      localStorage.setItem(findMovieTitle(), true);
+    }
+  };
+  const storageManipulationFalse = () => {
+    if (localStorage.getItem(findMovieTitle()) === null) {
+      localStorage.setItem(findMovieTitle(), false);
+    } else if (localStorage.getItem(findMovieTitle()) === "true") {
+      localStorage.removeItem(findMovieTitle());
+      localStorage.setItem(findMovieTitle(), false);
+    }
+  };
+
+  if (movieName.alt === "empty bookmark") {
+    movieName.removeAttribute("src");
+    movieName.setAttribute("src", "./assets/icon-bookmark-full.svg");
+    movieName.removeAttribute("alt");
+    movieName.setAttribute("alt", "full bookmark");
+    storageManipulationTrue();
+  } else if (movieName.alt === "full bookmark") {
+    movieName.removeAttribute("src");
+    movieName.setAttribute("src", "./assets/icon-bookmark-empty.svg");
+    movieName.removeAttribute("alt");
+    movieName.setAttribute("alt", "empty bookmark");
+    storageManipulationFalse();
+  }
+};
+/* bookmark listeners */
+const implementBookmarkSwitching = async () => {
+  const bookmarkArray = await document.getElementsByClassName("bookmark");
+  for (let i = 0; i < bookmarkArray.length; i++) {
+    bookmarkArray.item(i).addEventListener("click", switchBookmarkPhoto);
+  }
+};
+implementBookmarkSwitching();
 
 /* search results */
 if (document.getElementById("search-results")) {
