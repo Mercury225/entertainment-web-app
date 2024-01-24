@@ -281,6 +281,7 @@ const switchBookmarkPhoto = (event) => {
 /* bookmark listeners */
 const implementBookmarkSwitching = async () => {
   const bookmarkArray = await document.getElementsByClassName("bookmark");
+
   for (let i = 0; i < bookmarkArray.length; i++) {
     bookmarkArray.item(i).addEventListener("click", switchBookmarkPhoto);
   }
