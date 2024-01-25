@@ -61,20 +61,20 @@ const appendHeader = (filter, id) => {
   return process;
 };
 if (document.getElementById("search-results")) {
-  appendHeader(filterData(), "search-results");
+  appendHeader(filterData(), "search-results-section");
 }
 if (document.getElementById("search-results-tv")) {
-  appendHeader(filterDataTv(), "search-results-tv");
+  appendHeader(filterDataTv(), "search-results-tv-section");
 }
 
 if (document.getElementById("search-results-movies")) {
-  appendHeader(filterDataMovie(), "search-results-movies");
+  appendHeader(filterDataMovie(), "search-results-movies-section");
 }
 
 setTimeout(() => {
   if (document.getElementById("search-results-bookmarked")) {
     console.log("from if statement", filterDataBookmarked());
 
-    appendHeader(filterDataBookmarked(), "search-results-bookmarked");
+    appendHeader(filterDataBookmarked(), "search-results-bookmarked-section");
   }
 }, 0);

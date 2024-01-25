@@ -103,9 +103,20 @@ form {
 #movies,
 #tv,
 #bookmarked-tv,
-#bookmarked-movies {
+#bookmarked-movies,
+#search-results,
+#search-results-movies,
+#search-results-bookmarked,
+#search-results-tv {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   width: 70rem;
+}
+#search-results-section,
+#search-results-movies-section,
+#search-results-bookmarked-section,
+#search-results-tv-section {
+  display: flex;
+  flex-direction: column-reverse;
 }
