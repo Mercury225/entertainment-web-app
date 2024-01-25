@@ -28,10 +28,18 @@ figure {
 .movie-details {
   display: flex;
   align-items: center;
+  color: #ffffffc6;
 }
 .movie-photos {
   border-radius: 1rem;
 }
+
+.movie-photos:hover {
+  cursor: pointer;
+  filter: saturate(0.1);
+  transition-duration: 0.4s;
+}
+
 .movie-details img {
   padding-right: 0.3rem;
 }
@@ -40,7 +48,7 @@ figure {
 }
 
 figcaption h3 {
-  margin: 1rem 0 0 0;
+  margin: 0.2rem 0 0 0;
 }
 
 /* nav bar */
