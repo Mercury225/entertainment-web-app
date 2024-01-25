@@ -1,0 +1,25 @@
+#trending {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  transform-origin: top left;
+  transform: rotate(-90deg) translateX(-20rem);
+
+  width: 20rem;
+  height: 80rem;
+}
+
+#trending::-webkit-scrollbar {
+  display: none;
+}
+.trending {
+  transform: rotate(90deg);
+  padding: 2rem 0;
+}
+.trending figure {
+  margin: 0;
+}
+#recommended {
+  position: absolute;
+  top: 30rem;
+}

@@ -10,15 +10,17 @@
       sizes="32x32"
       href="./assets/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="svg-colors.css" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="./svg-colors.css" />
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./index.css" />
     <title>Frontend Mentor | Entertainment web app</title>
     <style></style>
   </head>
   <body>
+    <!--adding main and setting width and heights on logo-->
     <nav id="navigation-bar">
       <figure>
-        <img id="logo" src="./assets/logo.svg" />
+        <img id="logo" src="./assets/logo.svg" width="25" height="25" />
 
         <!--HOME ICON-->
         <a class="nav-icons" href="index.html">
@@ -66,47 +68,38 @@
             />
           </svg>
         </a>
-        <a href="./login.html">
-          <img src="./assets/image-avatar.png" alt="login-avatar width="20"
-          height="20"/>
+
+        <!--Profile Picture-->
+        <a href="./login.html" id="profile-photo">
+          <img src="./assets/image-avatar.png" alt="login-avatar width="30"
+          height="30"/>
         </a>
       </figure>
     </nav>
-    <div id="search-box">
-      <form action="./search-results.html">
-        <input type="image" src="./assets/icon-search.svg" />
-        <label for="search"></label>
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Search for movies or TV series"
-        />
-      </form>
-    </div>
+    <main>
+      <div id="search-box">
+        <form action="./search-results.html">
+          <input type="image" src="./assets/icon-search.svg" />
+          <label for="search"></label>
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search for movies or TV series"
+          />
+        </form>
+      </div>
 
-    <section id="trending">
-      <!-- Display trending shows -->
-      <h2>Trending</h2>
-    </section>
-    <section id="recommended">
-      <h2>Recommended for you</h2>
-      <!-- <article>
-        <figure>
-          <img src="" alt="" />
-          <img />
-          <figcaption>
-            <span>year</span>
-            <span><img src="" alt="" /> </span>
-            <span>genre</span>
-            <span>rating</span>
-            <h3>title</h3>
-          </figcaption>
-        </figure>
-      </article> -->
-      <!-- Display recommended shows -->
-    </section>
-
+      <section>
+        <!-- Display trending shows -->
+        <h2>Trending</h2>
+        <div id="trending"></div>
+      </section>
+      <section>
+        <h2>Recommended for you</h2>
+        <div id="recommended"></div>
+      </section>
+    </main>
     <script src="data.js" type="module"></script>
     <script src="search-results.js" type="module"></script>
   </body>

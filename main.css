@@ -1,9 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap");
+
 html,
 body {
   background: #10141e;
   color: #ffffff;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Outfit", sans-serif;
 }
-/* */
+body {
+  display: flex;
+  padding-top: 1rem;
+}
+nav figure {
+  width: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  background: #161d2f;
+}
+figure {
+  margin: 1rem;
+}
+
+.movie-details {
+  display: flex;
+  align-items: center;
+}
+.movie-photos {
+  border-radius: 1rem;
+}
+.movie-details img {
+  padding-right: 0.3rem;
+}
+.dots {
+  padding: 0 0.5rem;
+}
+
+figcaption h3 {
+  margin: 1rem 0 0 0;
+}
+
+/* nav bar */
 .nav-icons {
   text-decoration: none;
+  margin-bottom: 1rem;
+}
+#logo {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+#profile-photo {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+/* search bar */
+form {
+  display: flex;
+  align-items: center;
+}
+
+#search {
+  width: 20rem;
+  height: 2rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  background: transparent;
+  border: none;
+}
+
+#search:focus {
+  color: #ffffff;
+  border: none;
+  background: transparent;
+  border-bottom: 0.01rem solid #ffffff;
+  caret-color: red;
+}
+#search:hover {
+  cursor: pointer;
+  background: transparent;
+}
+#search:focus-visible {
+  outline-width: 0;
+}
+
+.bookmark-cover {
+  padding: 1rem;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background: #979797;
+  border-radius: 50%;
+  position: absolute;
+
+  transform: translate(15rem, -12rem);
+}
+#recommended,
+#movies,
+#tv,
+#bookmarked-tv,
+#bookmarked-movies {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  width: 70rem;
 }

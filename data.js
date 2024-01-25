@@ -34,8 +34,18 @@ import {
 /*recommended list is 5 - 28 */
 
 /* creating tags for videos */
-const createArticleTag = () => {
-  return document.createElement("article");
+const createDiv = () => {
+  const div = document.createElement("div");
+  // div.setAttribute("class", "movie-details");
+  return div;
+};
+const createArticleTag = (movieObject) => {
+  const article = document.createElement("article");
+  if (movieObject.isTrending === true && document.getElementById("trending")) {
+    article.setAttribute("class", "trending");
+  } else {
+  }
+  return article;
 };
 const createFigureTag = () => {
   return document.createElement("figure");
@@ -47,13 +57,14 @@ const createVideoImg = (movieObject) => {
   const createImgTag = document.createElement("img");
   createImgTag.setAttribute("src", movieObject.thumbnail.regular.small);
   createImgTag.setAttribute("alt", movieObject.title);
-  createImgTag.setAttribute("width", "200");
+  createImgTag.setAttribute("width", "300");
   createImgTag.setAttribute("height", "200");
+  createImgTag.setAttribute("class", "movie-photos");
   return createImgTag;
 };
 const createBookmarkSvg = (movieObject) => {
   const createImgTag = document.createElement("img");
-
+  const div = createDiv();
   if (
     movieObject.isBookmarked === true ||
     movieObject.isBookmarked === "true"
@@ -70,10 +81,11 @@ const createBookmarkSvg = (movieObject) => {
     createImgTag.classList.add("bookmark");
   }
 
-  createImgTag.setAttribute("width", "20");
-  createImgTag.setAttribute("height", "20");
-
-  return createImgTag;
+  createImgTag.setAttribute("width", "15");
+  createImgTag.setAttribute("height", "15");
+  div.setAttribute("class", "bookmark-cover");
+  div.appendChild(createImgTag);
+  return div;
 };
 
 const createFigCaptionTag = () => {
@@ -83,6 +95,12 @@ const createFigCaptionTag = () => {
 const yearTag = (movieObject) => {
   const createSpanTag = document.createElement("span");
   createSpanTag.innerHTML = movieObject.year;
+  return createSpanTag;
+};
+const dotTag = () => {
+  const createSpanTag = document.createElement("span");
+  createSpanTag.innerHTML = "&#183";
+  createSpanTag.setAttribute("class", "dots");
   return createSpanTag;
 };
 const categoryTag = (movieObject) => {
@@ -100,6 +118,7 @@ const titleTag = (movieObject) => {
   createSpanTag.innerHTML = movieObject.title;
   return createSpanTag;
 };
+
 const categoryImgTag = (movieObject) => {
   const createImgTag = document.createElement("img");
   if (movieObject.category === "Movie") {
@@ -110,18 +129,24 @@ const categoryImgTag = (movieObject) => {
   }
 
   createImgTag.setAttribute("alt", "category image");
-  createImgTag.setAttribute("width", "20");
-  createImgTag.setAttribute("height", "20");
+  createImgTag.setAttribute("width", "15");
+  createImgTag.setAttribute("height", "15");
   return createImgTag;
 };
 
 const compiledFigCaption = (movieObject) => {
   const figCaption = createFigCaptionTag();
-  figCaption.appendChild(yearTag(movieObject));
-  figCaption.appendChild(categoryImgTag(movieObject));
-  figCaption.appendChild(categoryTag(movieObject));
-  figCaption.appendChild(ratingTag(movieObject));
+  const div = createDiv();
+  figCaption.appendChild(div);
   figCaption.appendChild(titleTag(movieObject));
+  div.setAttribute("class", "movie-details");
+  div.appendChild(yearTag(movieObject));
+  div.appendChild(dotTag());
+  div.appendChild(categoryImgTag(movieObject));
+  div.appendChild(categoryTag(movieObject));
+  div.appendChild(dotTag());
+  div.appendChild(ratingTag(movieObject));
+
   return figCaption;
 };
 
@@ -134,7 +159,7 @@ const compiledFig = (movieObject) => {
 };
 
 const fullyCompiledArticle = (movieObject) => {
-  const article = createArticleTag();
+  const article = createArticleTag(movieObject);
   article.appendChild(compiledFig(movieObject));
   return article;
 };
@@ -245,7 +270,7 @@ const switchBookmarkPhoto = (event) => {
   let movieName = event.target;
 
   const findMovieTitle = () => {
-    return movieName.previousElementSibling.alt;
+    return movieName.parentNode.previousElementSibling.alt;
   };
 
   const storageManipulationTrue = () => {
