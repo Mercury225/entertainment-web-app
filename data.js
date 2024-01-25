@@ -55,10 +55,16 @@ const createFigureTag = () => {
 
 const createVideoImg = (movieObject) => {
   const createImgTag = document.createElement("img");
-  createImgTag.setAttribute("src", movieObject.thumbnail.regular.small);
+  createImgTag.setAttribute("src", movieObject.thumbnail.regular.large);
   createImgTag.setAttribute("alt", movieObject.title);
-  createImgTag.setAttribute("width", "300");
-  createImgTag.setAttribute("height", "200");
+  if (movieObject.isTrending && document.getElementById("trending")) {
+    createImgTag.setAttribute("width", "470");
+    createImgTag.setAttribute("height", "300");
+  } else {
+    createImgTag.setAttribute("width", "300");
+    createImgTag.setAttribute("height", "200");
+  }
+
   createImgTag.setAttribute("class", "movie-photos");
   return createImgTag;
 };
@@ -83,7 +89,12 @@ const createBookmarkSvg = (movieObject) => {
 
   createImgTag.setAttribute("width", "15");
   createImgTag.setAttribute("height", "15");
-  div.setAttribute("class", "bookmark-cover");
+  if (movieObject.isTrending && document.getElementById("trending")) {
+    div.setAttribute("class", "bookmark-cover trending-bookmark");
+  } else {
+    div.setAttribute("class", "bookmark-cover");
+  }
+
   div.appendChild(createImgTag);
   return div;
 };

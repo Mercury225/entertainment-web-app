@@ -4,7 +4,7 @@
   overflow-y: scroll;
   transform-origin: top left;
   transform: rotate(-90deg) translateX(-20rem);
-
+  align-items: center;
   width: 20rem;
   height: 80rem;
 }
@@ -13,13 +13,22 @@
   display: none;
 }
 .trending {
+  width: 15rem;
+  margin-bottom: 12rem;
   transform: rotate(90deg);
-  padding: 2rem 0;
 }
 .trending figure {
   margin: 0;
 }
-#recommended {
+.trending figcaption {
+  position: absolute;
+  z-index: 1;
+  transform: translate(2rem, -5rem);
+}
+.trending-bookmark {
+  transform: translate(25rem, -18rem);
+}
+#recommended-section {
   position: absolute;
   top: 30rem;
 }
