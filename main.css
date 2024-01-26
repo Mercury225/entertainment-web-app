@@ -128,3 +128,33 @@ form {
   display: flex;
   flex-direction: column-reverse;
 }
+
+/* play button */
+.playbutton {
+  display: flex;
+  opacity: 0;
+  position: absolute;
+  background: #9797978c;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 4rem;
+  border-radius: 2rem;
+  transition: all 0.2s ease-in;
+
+  transform: translate(5.5rem, -8rem);
+}
+.movie-photos:hover ~ .playbutton {
+  opacity: 1;
+}
+.playbutton:hover {
+  opacity: 1;
+  cursor: pointer;
+  filter: brightness(1.25);
+}
+.playbutton-trending {
+  transform: translate(11rem, -11rem);
+}
+.playbutton img {
+  margin-right: 1rem;
+}

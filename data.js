@@ -145,6 +145,25 @@ const categoryImgTag = (movieObject) => {
   return createImgTag;
 };
 
+const createPlayButton = (movieObject) => {
+  const div = createDiv();
+  if (movieObject.isTrending && document.getElementById("trending")) {
+    div.setAttribute("class", "playbutton playbutton-trending");
+  } else {
+    div.setAttribute("class", "playbutton");
+  }
+
+  const createImgTag = document.createElement("img");
+  createImgTag.setAttribute("src", "./assets/icon-play.svg");
+  createImgTag.setAttribute("width", "30");
+  createImgTag.setAttribute("height", "30");
+  const header = document.createElement("h3");
+  header.innerHTML = "Play";
+  div.appendChild(createImgTag);
+  div.appendChild(header);
+  return div;
+};
+
 const compiledFigCaption = (movieObject) => {
   const figCaption = createFigCaptionTag();
   const div = createDiv();
@@ -165,6 +184,7 @@ const compiledFig = (movieObject) => {
   const fig = createFigureTag();
   fig.appendChild(createVideoImg(movieObject));
   fig.appendChild(createBookmarkSvg(movieObject));
+  fig.appendChild(createPlayButton(movieObject));
   fig.appendChild(compiledFigCaption(movieObject));
   return fig;
 };
