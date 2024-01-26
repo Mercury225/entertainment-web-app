@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap");
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+  background: #10141e;
+  color: #ffffff;
+
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Outfit", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+legend {
+  font-size: 1.6rem;
+}
+form,
+fieldset {
+  background: #161d2f;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+form {
+  margin-top: 3rem;
+  height: auto;
+  width: 18rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+fieldset {
+  border: none;
+  width: 100%;
+  height: 80%;
+  padding: 0;
+  margin: 0;
+}
+.text-input {
+  width: 90%;
+  height: 3rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  border-bottom: 0.01rem solid #5a698f;
+}
+
+.text-input:focus {
+  color: #ffffff;
+  border: none;
+  background: transparent;
+  border-bottom: 0.01rem solid #5a698f;
+  caret-color: red;
+}
+.text-input:hover {
+  cursor: pointer;
+  background: transparent;
+}
+.text-input:focus-visible {
+  outline-width: 0;
+}
+#button {
+  width: 100%;
+  background: #fc4747;
+  color: #ffffff;
+  height: 3rem;
+  text-align: center;
+  border: none;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+#button:hover {
+  filter: saturate(0.8);
+  cursor: pointer;
+}
+aside {
+  text-decoration: none;
+  font-style: normal;
+}
+aside em {
+  padding-right: 0.3rem;
+  text-decoration: none;
+  font-style: normal;
+}
+aside a {
+  text-decoration: none;
+  color: #fc4747;
+}
+aside a:hover {
+  text-decoration: underline;
+  color: #fc4747;
+}
+.margin-bottom-1rem {
+  margin-bottom: 1rem;
+}
+#passwords-match,
+#passwords-no-match {
+  text-decoration: none;
+}
+
+#passwords-no-match {
+  color: #fc4747;
+}
+#passwords-match {
+  color: #6bfc47;
+}

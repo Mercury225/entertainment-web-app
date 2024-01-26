@@ -10,72 +10,59 @@
       sizes="32x32"
       href="./assets/favicon-32x32.png"
     />
+    <link rel="stylesheet" href="forms.css" />
 
     <title>Frontend Mentor | Entertainment web app</title>
   </head>
   <body>
+    <img id="logo" src="./assets/logo.svg" width="25" height="25" />
     <form action="login.html">
       <fieldset>
-        <legend>Sign Up</legend>
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" />
-        <label for="password">Password</label>
+        <legend class="margin-bottom-1rem">Sign Up</legend>
+        <label for="email"></label>
         <input
+          class="text-input margin-bottom-1rem"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email Address"
+        />
+        <label for="password"></label>
+        <input
+          class="text-input margin-bottom-1rem"
           type="password"
           id="password"
           name="password"
           onkeyup="checkPassword()"
+          placeholder="Password"
         />
-        <label for="repeat-password">Repeat Password</label>
+        <label for="repeat-password"></label>
         <input
+          class="text-input margin-bottom-1rem"
           type="password"
           id="repeat-password"
           name="repeat-password"
           onkeyup="checkPassword()"
+          placeholder="Repeat Password"
         />
 
         <input
+          id="button"
+          class="create-account"
           type="submit"
           id="create-account"
           value="Create an account"
           disabled
         />
       </fieldset>
+      <ins id="passwords-match"></ins>
+      <ins id="passwords-no-match"></ins>
+
+      <aside>
+        <em>Already have an account?</em>
+        <a href="./login.html">Login</a>
+      </aside>
     </form>
-    <ins id="passwords-match"></ins>
-    <ins id="passwords-no-match"></ins>
-    <hr />
-    <aside>
-      <em>Already have an account?</em>
-      <a href="./login.html">Login</a>
-    </aside>
   </body>
-  <script>
-    const checkPassword = () => {
-      const passwordValue = document.getElementById("password").value;
-      const checkPasswordValue =
-        document.getElementById("repeat-password").value;
-
-      /* passwords match, unlock submit button */
-      const changeInsValidated = () => {
-        document.getElementById("passwords-match").innerHTML =
-          "Passwords match";
-        document.getElementById("passwords-no-match").innerHTML = "";
-        document.getElementById("create-account").disabled = false;
-      };
-      /* passwords don't match, lock submit button */
-
-      const changeInsNotValidated = () => {
-        document.getElementById("passwords-no-match").innerHTML =
-          "Passwords don't Match";
-        document.getElementById("passwords-match").innerHTML = "";
-      };
-
-      if (passwordValue === checkPasswordValue) {
-        changeInsValidated();
-      } else {
-        changeInsNotValidated();
-      }
-    };
-  </script>
+  <script type="text/javascript" src="./sign-up.js"></script>
 </html>

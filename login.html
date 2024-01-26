@@ -10,25 +10,38 @@
       sizes="32x32"
       href="./assets/favicon-32x32.png"
     />
+    <link rel="stylesheet" href="forms.css" />
 
     <title>Frontend Mentor | Entertainment web app</title>
   </head>
   <body>
+    <img id="logo" src="./assets/logo.svg" width="25" height="25" />
     <form onsubmit="redirect(); return false">
       <fieldset>
-        <legend>Login</legend>
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" />
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" />
-        <input type="submit" value="Login to your account" />
+        <legend class="margin-bottom-1rem">Login</legend>
+        <label for="email"></label>
+        <input
+          class="text-input margin-bottom-1rem"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email Address"
+        />
+        <label for="password"></label>
+        <input
+          class="text-input margin-bottom-1rem"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+        />
+        <input id="button" type="submit" value="Login to your account" />
       </fieldset>
+      <aside>
+        <em>Don't have an account?</em>
+        <a href="./sign-up.html">Sign Up</a>
+      </aside>
     </form>
-    <hr />
-    <aside>
-      <em>Don't have an account?</em>
-      <a href="./sign-up.html">Sign Up</a>
-    </aside>
   </body>
   <script src="./redirect.js"></script>
 </html>
