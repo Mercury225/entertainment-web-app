@@ -4,10 +4,19 @@ html,
 body {
   background: #10141e;
   color: #ffffff;
+
   height: 100%;
   box-sizing: border-box;
   font-size: 16px;
   font-family: "Outfit", sans-serif;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 2rem;
+}
+h3 {
+  font-weight: 700;
 }
 body {
   display: flex;
@@ -15,16 +24,21 @@ body {
 }
 nav figure {
   width: 5rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   border-radius: 1rem;
   background: #161d2f;
 }
 figure {
   margin: 1rem;
 }
-
+.small-icons {
+  display: flex;
+  flex-direction: column;
+}
 .movie-details {
   display: flex;
   align-items: center;
@@ -58,10 +72,8 @@ figcaption h3 {
 }
 #logo {
   margin-top: 2rem;
-  margin-bottom: 3rem;
 }
 #profile-photo {
-  margin-top: 5rem;
   margin-bottom: 2rem;
 }
 /* search bar */
@@ -71,12 +83,15 @@ form {
 }
 
 #search {
-  width: 20rem;
-  height: 2rem;
+  width: 25rem;
+  height: 3rem;
   margin-left: 1rem;
   padding-left: 1rem;
   background: transparent;
   border: none;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
 }
 
 #search:focus {
@@ -152,9 +167,129 @@ form {
   cursor: pointer;
   filter: brightness(1.25);
 }
+
 .playbutton-trending {
   transform: translate(11rem, -11rem);
 }
 .playbutton img {
   margin-right: 1rem;
+}
+
+/* responsive design */
+@media screen and (min-width: 1300px) and (max-width: 1500px) {
+  #recommended,
+  #movies,
+  #tv,
+  #bookmarked-tv,
+  #bookmarked-movies,
+  #search-results,
+  #search-results-movies,
+  #search-results-bookmarked,
+  #search-results-tv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    width: 70rem;
+    margin-left: 6rem;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav figure {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90vw;
+    height: 5rem;
+  }
+  main {
+    width: 90vw;
+  }
+  .small-icons {
+    display: flex;
+    flex-direction: row;
+  }
+  #logo {
+    margin: 0;
+    margin-left: 2rem;
+  }
+  #profile-photo {
+    margin: 0;
+    margin-right: 2rem;
+  }
+  .nav-icons {
+    margin: 0 0.75rem;
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1300px) {
+  #recommended,
+  #movies,
+  #tv,
+  #bookmarked-tv,
+  #bookmarked-movies,
+  #search-results,
+  #search-results-movies,
+  #search-results-bookmarked,
+  #search-results-tv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90vw;
+    /* margin-left: 5vw; */
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+  #recommended,
+  #movies,
+  #tv,
+  #bookmarked-tv,
+  #bookmarked-movies,
+  #search-results,
+  #search-results-movies,
+  #search-results-bookmarked,
+  #search-results-tv {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 90vw;
+    /* margin-left: 5vw; */
+  }
+}
+@media screen and (max-width: 800px) {
+  #recommended,
+  #movies,
+  #tv,
+  #bookmarked-tv,
+  #bookmarked-movies,
+  #search-results,
+  #search-results-movies,
+  #search-results-bookmarked,
+  #search-results-tv {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    width: 90vw;
+  }
+  #recommended article,
+  #movies article,
+  #tv article,
+  #bookmarked-tv article,
+  #bookmarked-movies article,
+  #search-results article,
+  #search-results-movies article,
+  #search-results-bookmarked article,
+  #search-results-tv article {
+    display: grid;
+    justify-content: center;
+  }
+
+
 }
