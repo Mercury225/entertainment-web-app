@@ -116,7 +116,7 @@ form {
   display: flex;
   justify-items: center;
   align-items: center;
-  background: #979797;
+  background: #10141e74;
   border-radius: 50%;
   position: absolute;
 
@@ -290,6 +290,4 @@ form {
     display: grid;
     justify-content: center;
   }
-
-
 }
