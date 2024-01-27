@@ -11,7 +11,12 @@ const fetchJSON = async () => {
     throw error; // Propagate the error
   }
 };
-
+try {
+  const test = await fetchJSON();
+  console.log("test", test);
+} catch (error) {
+  throw error;
+}
 const data = await fetchJSON();
 console.log(data);
 
