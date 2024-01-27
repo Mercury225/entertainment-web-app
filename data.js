@@ -2,11 +2,20 @@
 // console.log(data);
 
 const fetchJSON = async () => {
-  const getJSON = await fetch("./data.json");
-  const convertJSON = await getJSON.json();
-  return convertJSON;
+  try {
+    const getJSON = await fetch("./data.json");
+    const convertJSON = await getJSON.json();
+    return convertJSON;
+  } catch (error) {
+    console.error("Error fetching JSON:", error);
+    throw error; // Propagate the error
+  }
 };
+
 const data = await fetchJSON();
+console.log(data);
+
+// Handle the error
 
 const getTruthValue = (index) => {
   return localStorage.getItem(localStorage.key(index));
