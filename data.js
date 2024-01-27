@@ -1,5 +1,3 @@
-// import data from "./data.json" assert { type: "json" }; /* update data.json */
-// console.log(data);
 
 const fetchJSON = async () => {
   try {
@@ -14,11 +12,11 @@ const fetchJSON = async () => {
 try {
   const test = await fetchJSON();
   console.log("test", test);
-} catch (error) {
+} catch (error) {console.error("await fetchJSON not working", error)
   throw error;
 }
 const data = await fetchJSON();
-console.log(data);
+
 
 // Handle the error
 

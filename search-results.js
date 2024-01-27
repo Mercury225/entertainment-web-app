@@ -1,4 +1,21 @@
-import data from "./data.json" assert { type: "json" };
+const fetchJSON = async () => {
+  try {
+    const getJSON = await fetch("./data.json");
+    const convertJSON = await getJSON.json();
+    return convertJSON;
+  } catch (error) {
+    console.error("Error fetching JSON:", error);
+    throw error; // Propagate the error
+  }
+};
+try {
+  const test = await fetchJSON();
+  console.log("test", test);
+} catch (error) {
+  console.error("await fetchJSON not working", error);
+  throw error;
+}
+const data = await fetchJSON();
 
 const searchTerm = () => {
   const unfilteredURL = new URL(document.location).searchParams.get("search");
