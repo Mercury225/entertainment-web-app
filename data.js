@@ -1,4 +1,12 @@
-import data from "./data.json" assert { type: "json" }; /* update data.json */
+// import data from "./data.json" assert { type: "json" }; /* update data.json */
+// console.log(data);
+
+const fetchJSON = async () => {
+  const getJSON = await fetch("./data.json");
+  const convertJSON = await getJSON.json();
+  return convertJSON;
+};
+const data = await fetchJSON();
 
 const getTruthValue = (index) => {
   return localStorage.getItem(localStorage.key(index));
